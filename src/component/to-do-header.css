@@ -1,0 +1,23 @@
+.to-do-header-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    border-radius: 15px;
+    font-size: 20px;
+    height: 50px;
+}
+
+
+.img-div > img {
+    height: 60px;
+    width: 60px;
+}

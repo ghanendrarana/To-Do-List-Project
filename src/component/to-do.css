@@ -1,0 +1,10 @@
+.to-do-container {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    height: 80vh;
+    width: 400px;
+    background-color: white;
+    border-radius: 25px;
+}
+

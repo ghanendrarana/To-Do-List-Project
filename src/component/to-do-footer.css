@@ -1,0 +1,17 @@
+.to-do-footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .cloud{
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+     padding: 1px 5px;
+  }
+  .cloud img {
+    width: 100px; /* Adjust size */
+    height: auto; /* Maintain aspect ratio */
+  }
+  

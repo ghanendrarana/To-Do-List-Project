@@ -2,3 +2,29 @@
     margin: 0;
     padding: 0;
 }
+
+input {
+    outline: none;
+    border: none;
+}
+
+/* Make scrollbar thinner */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #b2beb5;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  

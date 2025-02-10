@@ -1,23 +1,25 @@
-.to-do-header-container{
+.header-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
-.title {
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 30px;
-    border-radius: 15px;
-    font-size: 20px;
-    height: 50px;
+.header-container > input {
+    height: 30px;
+    width: 50%;
+    padding: 0 8px;
+    border: 1px solid #b2beb5;
+    border-radius: 5px;
 }
 
+.header-container > button {
+    height: 30px;
+    padding: 0 8px;
+}
 
-.img-div > img {
-    height: 60px;
-    width: 60px;
+.header-container > img {
+    margin-left: auto;
+    height: 40px;
+    width: 40px;
 }

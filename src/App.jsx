@@ -5,9 +5,9 @@ import "./app.css"
 function App() {
 
   return (
-      <div className="App">
-           <ToDo />
-      </div>   
+    <div className="App">
+      <ToDo />
+    </div>
   )
 }
 

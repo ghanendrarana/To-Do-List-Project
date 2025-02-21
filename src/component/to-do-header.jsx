@@ -2,11 +2,37 @@ import React from "react";
 import "./to-do-header.css"
 import Emoji from '../assets/emoji1.jpg'
 import { TodoContext } from "../context/todo-context";
-import { v4 as uuid } from 'uuid';
 
 function ToDoHeader() {
-    const { tasks, setTasks } = React.useContext(TodoContext);
     const [newTask, setNewTask] = React.useState("");
+    const { tasks, setTasks, taskToEdit, addTask, editTask, setTaskToEdit } = React.useContext(TodoContext);
+
+    React.useEffect(() => {
+        if (taskToEdit && taskToEdit.id) {
+            setNewTask(taskToEdit.content)
+        } else {
+            setNewTask("")
+        }
+    }, [taskToEdit])
+
+    const handleAddEditTask = () => {
+        try {
+            if (taskToEdit && taskToEdit.id) {
+                editTask({
+                    id: taskToEdit.id,
+                    content: newTask,
+                    completed: taskToEdit.completed
+                })
+            } else {
+                addTask(newTask)
+            }
+        } catch (error) {
+            console.log("Error", error)
+        } finally {
+            setNewTask("")
+            setTaskToEdit(null)
+        }
+    };
 
     return (
         <div className='header-container'>
@@ -20,23 +46,7 @@ function ToDoHeader() {
                 }}
             />
             
-            <button onClick={() => {
-                if (newTask.length === 0){
-                    alert("Task cannot be empty. Please type your task!")
-                } else {
-                    const newTaskObject = {
-                        id: uuid(),
-                        content: newTask,
-                        completed: false
-                    };
-
-                    // add new task to the front of the array
-                    setTasks([newTaskObject, ...tasks])
-
-                    // clear the input field
-                    setNewTask("");
-                }
-            }}>Add</button>
+            <button onClick={handleAddEditTask}>{taskToEdit ? "Edit" : "Add"}</button>
 
             <img src={Emoji} alt="Logo" />
         </div>

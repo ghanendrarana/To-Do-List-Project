@@ -52,7 +52,6 @@ export const TodoContextProvider = (props) => {
         toast.success("Task deleted successfully!")
     };
 
-
     return (
         <TodoContext.Provider value={{ tasks, setTasks, taskToEdit, setTaskToEdit, addTask, editTask, deleteTask, }}>
             {props.children}

@@ -5,7 +5,7 @@ import { TodoContext } from "../context/todo-context";
 
 function ToDoHeader() {
     const [newTask, setNewTask] = React.useState("");
-    const { tasks, setTasks, taskToEdit, addTask, editTask, setTaskToEdit } = React.useContext(TodoContext);
+    const { taskToEdit, addTask, editTask, setTaskToEdit } = React.useContext(TodoContext);
 
     React.useEffect(() => {
         if (taskToEdit && taskToEdit.id) {

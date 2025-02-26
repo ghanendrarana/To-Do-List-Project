@@ -4,7 +4,7 @@ import { Trash2, Pencil } from 'lucide-react';
 import { TodoContext } from "../context/todo-context";
 
 function ToDoBody() {
-    const { tasks, setTaskToEdit, deleteTask, editTask } = React.useContext(TodoContext);
+    const { tasks, setTaskToEdit, deleteTask, editTask, } = React.useContext(TodoContext);
 
     const handleCompletedChange = (data) => {
         const newTask = {
@@ -21,8 +21,8 @@ function ToDoBody() {
             {
                 tasks.map((data, index) => {
                     return (
-                        <div className="todo-item">
-                            <input type="checkbox" onChange={() => handleCompletedChange(data)} />
+                        <div className="todo-item" key={index}>
+                            <input type="checkbox" checked={data.completed} onChange={() => handleCompletedChange(data)} />
                             <span style={{ textDecoration: data.completed ? "line-through" : "" }}>{data.content}</span>
                             <div className="buttons">
                                 <button onClick={() => {
@@ -45,5 +45,4 @@ function ToDoBody() {
         </div>
     )
 }
-
 export default ToDoBody;

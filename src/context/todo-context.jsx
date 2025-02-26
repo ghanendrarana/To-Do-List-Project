@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "sonner";
 import { v4 as uuid } from 'uuid';
 
@@ -9,6 +9,16 @@ export const TodoContext = React.createContext(null);
 export const TodoContextProvider = (props) => {
     const [tasks, setTasks] = React.useState([]);
     const [taskToEdit, setTaskToEdit] = React.useState(null);
+
+    useEffect(() => {
+        const tasks = localStorage.getItem("tasks");
+        const parseTasks = JSON.parse(tasks);
+        if (Array.isArray(parseTasks) && tasks.length > 0) {
+            setTasks(parseTasks);
+        } else {
+            setTasks([]);
+        }
+    }, []);
 
     // add task
     const addTask = (newTask) => {
@@ -23,6 +33,8 @@ export const TodoContextProvider = (props) => {
 
             // add new task to the front of the array
             setTasks([newTaskObject, ...tasks])
+
+            localStorage.setItem("tasks", JSON.stringify([newTaskObject, ...tasks]));
 
             // render toast
             toast.success("Task added successfully!")
@@ -40,6 +52,8 @@ export const TodoContextProvider = (props) => {
 
         setTasks(newTasks);
         setTaskToEdit(null);
+
+        localStorage.setItem("tasks", JSON.stringify(newTasks));
     }
 
 
@@ -47,6 +61,8 @@ export const TodoContextProvider = (props) => {
     const deleteTask = (id) => {
         const newTasks = tasks.filter((task) => task.id !== id);
         setTasks(newTasks);
+
+        localStorage.setItem("tasks", JSON.stringify(newTasks));
 
         // render toast
         toast.success("Task deleted successfully!")
